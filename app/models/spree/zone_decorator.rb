@@ -39,7 +39,7 @@ Spree::Zone.class_eval do
   end
 
   def self.match(address)
-    return unless matches = self.includes(:zone_members).
+    return unless matches = self.includes(zone_members: :zoneable).
       order('zone_members_count', 'created_at').
       select { |zone| zone.include? address }
 
